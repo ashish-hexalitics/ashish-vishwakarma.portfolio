@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              {["Home", "Projects", "Contact"].map((item, index) => (
+              {["Home", "Projects"].map((item, index) => (
                 <li key={index}>
                   <a
                     href={`#${item.toLowerCase()}`}
@@ -44,8 +44,7 @@ const Footer: React.FC = () => {
         {/* Social Media Links */}
         <div className="flex justify-center space-x-6 mb-6">
           {[
-            { icon: <FaFacebookF />, link: "https://facebook.com" },
-            { icon: <FaTwitter />, link: "https://twitter.com" },
+            { icon: <FaGithub />, link: "https://github.com" },
             { icon: <FaLinkedinIn />, link: "https://linkedin.com" },
             { icon: <FaInstagram />, link: "https://instagram.com" },
           ].map((social, index) => (
@@ -63,7 +62,7 @@ const Footer: React.FC = () => {
 
         {/* Footer Bottom Section */}
         <div className="text-center text-gray-500 border-t border-gray-700 pt-5">
-          <p className="text-sm">© 2023 MyPortfolio. All rights reserved.</p>
+          <p className="text-sm">© 2024 MyPortfolio. All rights reserved.</p>
         </div>
       </div>
     </footer>

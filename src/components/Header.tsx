@@ -1,15 +1,31 @@
 import React, { useState, useRef } from "react";
 import { Link } from "react-scroll";
-import { FaBars, FaTimes, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaLinkedin,
+  FaGithub,
+  FaInstagram,
+} from "react-icons/fa";
+// import { Document, Page } from "react-pdf";
+// import AshishCV from "../assets/Ashish-React-CV-5.pdf";
+import PdfPreviewModal from "./PdfPreviewModal"; // Import the modal
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isSocialOpen, setIsSocialOpen] = useState(false); 
+  const [isSocialOpen, setIsSocialOpen] = useState(false);
+  const [showPdf, setShowPdf] = useState(false); // State for PDF modal
   const borderRefTop = useRef<HTMLSpanElement | null>(null);
   const borderRefBottom = useRef<HTMLSpanElement | null>(null);
+  // const [numPages, setNumPages] = useState<number>();
+  // const [pageNumber, setPageNumber] = useState<number>(1);
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleSocialDropdown = () => setIsSocialOpen((prev) => !prev); 
+  const toggleSocialDropdown = () => setIsSocialOpen((prev) => !prev);
+
+  // const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+  //   setNumPages(numPages);
+  // };
 
   const handleMouseEnter = (index: number) => {
     const linkElement = document.getElementById(`link-${index}`);
@@ -18,30 +34,65 @@ const Header: React.FC = () => {
 
       if (borderRefTop.current) {
         borderRefTop.current.style.left = `${offsetLeft}px`;
+        borderRefTop.current.style.top = `-${2}px`;
+        borderRefTop.current.style.transform = "translate(0,0)";
         borderRefTop.current.style.width = `${clientWidth}px`;
+        borderRefTop.current.style.height = `20px`;
+        borderRefTop.current.style.borderTop = `2px solid #000`;
+        borderRefTop.current.style.borderRight = `none`;
+        borderRefTop.current.style.borderBottomLeftRadius = `0`;
+        borderRefTop.current.style.borderTopLeftRadius = `0`;
+        borderRefTop.current.style.borderBottomRightRadius = `0`;
+        borderRefTop.current.style.borderTopRightRadius = `0`;
       }
 
       if (borderRefBottom.current) {
         borderRefBottom.current.style.left = `${offsetLeft}px`;
+        borderRefBottom.current.style.bottom = `-${2}px`;
         borderRefBottom.current.style.width = `${clientWidth}px`;
+        borderRefBottom.current.style.transform = "translate(1px,-1px)";
+        borderRefBottom.current.style.height = `20px`;
+        borderRefBottom.current.style.borderBottom = `2px solid #000`;
+        borderRefBottom.current.style.borderLeft = `none`;
+        borderRefBottom.current.style.borderBottomLeftRadius = `0`;
+        borderRefBottom.current.style.borderTopLeftRadius = `0`;
+        borderRefBottom.current.style.borderBottomRightRadius = `0`;
+        borderRefBottom.current.style.borderBottomLeftRadius = `0`;
       }
     }
   };
 
   const handleMouseLeaveTop = () => {
     if (borderRefTop.current) {
-      borderRefTop.current.style.transition = "left 0.5s ease-out, width 0.5s ease-out";
-      borderRefTop.current.style.left = "100%";
-      borderRefTop.current.style.width = "0";
+      borderRefTop.current.style.transition =
+        "left 0.5s ease-out, width 0.5s ease-out";
+      borderRefTop.current.style.left = `calc(100% + 2px)`;
+      borderRefTop.current.style.transform = "translate(-100%,0)";
+      borderRefTop.current.style.width = "20px";
+      borderRefTop.current.style.borderRight = `2px solid #000`;
+      borderRefTop.current.style.borderBottomLeftRadius = `0`;
+      borderRefTop.current.style.borderTopLeftRadius = `0`;
+      borderRefTop.current.style.borderBottomRightRadius = `0`;
+      borderRefTop.current.style.borderTopRightRadius = `.5rem`;
     }
   };
 
   const handleMouseLeaveBottom = () => {
     if (borderRefBottom.current) {
-      borderRefBottom.current.style.transition = "left 0.5s ease-out, width 0.5s ease-out";
-      borderRefBottom.current.style.left = "0";
-      borderRefBottom.current.style.width = "0";
+      borderRefBottom.current.style.transition =
+        "left 0.5s ease-out, width 0.5s ease-out";
+      borderRefBottom.current.style.left = `calc(0% - 2px)`;
+      borderRefBottom.current.style.width = "20px";
+      borderRefBottom.current.style.transform = "translate(1px,-1px)";
+      borderRefBottom.current.style.borderLeft = `2px solid #000`;
+      borderRefBottom.current.style.borderTopLeftRadius = `0`;
+      borderRefBottom.current.style.borderBottomRightRadius = `0`;
+      borderRefBottom.current.style.borderBottomLeftRadius = `.5rem`;
     }
+  };
+
+  const handleLinkClick = (project: {link:string}) => {
+    window.open(project.link, "_blank", "rel=noopener noreferrer");
   };
 
   return (
@@ -57,7 +108,7 @@ const Header: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex relative p-2 border-2 border-gray-300 rounded-lg">
           <div className="flex gap-8 text-lg text-gray-800 font-semibold bg-gray-100 py-4 px-6 border-2 border-gray-200 rounded-lg relative">
-            {["Home", "Projects", "Contact"].map((item, index) => (
+            {["Home", "Projects"].map((item, index) => (
               <Link
                 key={item}
                 to={item.toLowerCase()}
@@ -76,54 +127,103 @@ const Header: React.FC = () => {
             ))}
 
             {/* Social Dropdown */}
-            <div className="relative">
+            <Link
+              className="relative group cursor-pointer px-2"
+              duration={500}
+              onMouseEnter={() => handleMouseEnter(4)}
+              onMouseLeave={() => {
+                handleMouseLeaveTop();
+                handleMouseLeaveBottom();
+              }}
+              to=""
+              id={`link-4`}
+            >
               <button
                 onClick={toggleSocialDropdown}
-                className="text-gray-800 font-semibold focus:outline-none cursor-pointer"
+                className="hover:text-gray-800 transition cursor-pointer"
               >
                 Social
               </button>
               {isSocialOpen && (
                 <div className="absolute mt-2 py-2 w-48 bg-white rounded-lg shadow-xl z-50">
-                  <a
-                    href="https://linkedin.com/in/yourprofile"
+                  <Link
+                    to="https://linkedin.com/in/yourprofile"
                     className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaLinkedin className="mr-2" /> LinkedIn
-                  </a>
-                  <a
-                    href="https://github.com/yourprofile"
+                    <button
+                      className="flex items-center hover:bg-gray-100"
+                      onClick={() =>
+                        handleLinkClick({
+                          link: "https://www.linkedin.com/in/ashish-vishwakarma-5827131a2",
+                        })
+                      }
+                    >
+                      <FaLinkedin className="mr-2" />
+                      LinkedIn
+                    </button>
+                  </Link>
+                  <Link
+                    to=""
                     className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaGithub className="mr-2" /> GitHub
-                  </a>
-                  <a
-                    href="https://twitter.com/yourprofile"
+                    <button
+                      className="flex items-center hover:bg-gray-100"
+                      onClick={() =>
+                        handleLinkClick({
+                          link: "https://github.com/aishuvishwakarma",
+                        })
+                      }
+                    >
+                      <FaGithub className="mr-2" />
+                      GitHub
+                    </button>
+                  </Link>
+                  <Link
+                    to=""
                     className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaInstagram className="mr-2" /> Instagram
-                  </a>
+                    <button
+                      className="flex items-center hover:bg-gray-100"
+                      onClick={() =>
+                        handleLinkClick({
+                          link: "https://www.instagram.com/codeamon_",
+                        })
+                      }
+                    >
+                      <FaInstagram className="mr-2" /> Instagram
+                    </button>
+                  </Link>
                 </div>
               )}
-            </div>
-            <div className="relative">
+            </Link>
+            <Link
+              className="relative group cursor-pointer px-2"
+              duration={500}
+              onMouseEnter={() => handleMouseEnter(5)}
+              onMouseLeave={() => {
+                handleMouseLeaveTop();
+                handleMouseLeaveBottom();
+              }}
+              to=""
+              id={`link-5`}
+            >
               <button
+                onClick={() => setShowPdf(true)}
                 className="text-gray-800 font-semibold focus:outline-none cursor-pointer"
               >
-                Download CV
+                View CV
               </button>
-            </div>
-
+            </Link>
             {/* Borders for Links */}
             <span
               ref={borderRefTop}
-              className="absolute h-[2px] bg-black transition-all duration-1000"
+              className="absolute h-[2px]  transition-all duration-1000"
               style={{
                 left: 0,
                 width: 0,
@@ -132,7 +232,7 @@ const Header: React.FC = () => {
             />
             <span
               ref={borderRefBottom}
-              className="absolute h-[2px] bg-black transition-all duration-1000"
+              className="absolute h-[2px] transition-all duration-1000"
               style={{
                 left: 0,
                 width: 0,
@@ -168,34 +268,27 @@ const Header: React.FC = () => {
 
             {/* Social Links for Mobile Menu */}
             <div className="flex flex-col items-center gap-2 mt-4">
-              <a
-                href="https://linkedin.com/in/yourprofile"
+              <Link
+                to="https://linkedin.com/in/yourprofile"
                 className="text-white hover:text-yellow-300"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 LinkedIn
-              </a>
-              <a
-                href="https://github.com/yourprofile"
+              </Link>
+              <Link
+                to="https://github.com/ashish-hexalitics"
                 className="text-white hover:text-yellow-300"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 GitHub
-              </a>
-              <a
-                href="https://twitter.com/yourprofile"
-                className="text-white hover:text-yellow-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
+              </Link>
             </div>
           </div>
         )}
       </nav>
+      {showPdf && <PdfPreviewModal onClose={() => setShowPdf(false)} />}
     </header>
   );
 };

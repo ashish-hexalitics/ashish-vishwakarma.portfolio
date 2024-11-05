@@ -42,6 +42,7 @@ const HeroSection: React.FC = () => {
       backSpeed: 50,
       backDelay: 50,
       loop: false,
+      cursorChar: "👋",
     });
 
     return () => {
@@ -54,17 +55,18 @@ const HeroSection: React.FC = () => {
       // Initialize Typed.js for the hero description
       const leanMoreTyped = new Typed(el2.current!, {
         strings: [
-          `I am a full-stack developer with 3 years of proven experience in the
-          field. I am skilled in Search Engine Optimization, Next.js,
-          React.js, Tailwind CSS, and JavaScript. I am passionate about
-          creating interactive and beautiful user interfaces, along with the
-          required functionalities on the front end.`,
+          `Highly skilled React Developer with 5+ years of experience in developing web
+applications. Expertise in React JS, React Native, and JavaScript languages. I
+specialize in architecting scalable solutions that prioritize performance and user
+experience also dedicated to delivering cutting-edge solutions that elevate user
+experience`,
         ],
-        startDelay: 100,
-        typeSpeed: 50,
+        startDelay: 10,
+        typeSpeed: 20,
         backSpeed: 50,
         backDelay: 50,
         loop: false,
+        cursorChar: "😊",
       });
 
       return () => leanMoreTyped.destroy();
@@ -125,8 +127,14 @@ const HeroSection: React.FC = () => {
       >
         <defs>
           <linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: "#FF0080", stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: "#FF6600", stopOpacity: 1 }} />
+            <stop
+              offset="0%"
+              style={{ stopColor: "#FF0080", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#FF6600", stopOpacity: 1 }}
+            />
           </linearGradient>
         </defs>
         <path
@@ -145,8 +153,14 @@ const HeroSection: React.FC = () => {
       >
         <defs>
           <linearGradient id="blobGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: "#FF0080", stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: "#FF6600", stopOpacity: 1 }} />
+            <stop
+              offset="0%"
+              style={{ stopColor: "#FF0080", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{ stopColor: "#FF6600", stopOpacity: 1 }}
+            />
           </linearGradient>
         </defs>
         <path
