@@ -1,6 +1,5 @@
 import React from "react";
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import { Link } from "react-scroll";
 
 const Footer: React.FC = () => {
   const handleLinkClick = (project: { link: string }) => {
