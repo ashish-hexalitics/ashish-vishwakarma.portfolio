@@ -97,17 +97,17 @@ const Header: React.FC = () => {
 
   return (
     <header className="fixed w-full p-4 transition-all duration-1000 bg-transparent bg-opacity-90 z-50 backdrop-blur-md">
-      <nav className="flex justify-between items-center max-w-6xl mx-auto">
+      <nav className="flex justify-between h-full items-center max-w-6xl mx-auto">
         <h1
-          className="text-md font-bold text-gray-800 cursor-pointer transition-transform uppercase underline duration-1000 hover:scale-105"
+          className="text-md h-full font-bold text-gray-800 cursor-pointer transition-transform uppercase underline duration-1000 hover:scale-105"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           Ashish Vishwakarma
         </h1>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex relative p-2 border-2 border-gray-300 rounded-lg">
-          <div className="flex gap-8 text-lg text-gray-800 font-semibold bg-gray-100 py-4 px-6 border-2 border-gray-200 rounded-lg relative">
+        <div className="hidden h-full md:flex relative p-2  border-2 border-gray-300 rounded-lg">
+          <div className="grid grid-cols-4 h-full w-full text-lg text-gray-800 font-semibold bg-gray-100  px-6 border-2 border-gray-200 rounded-lg relative">
             {["Home", "Projects"].map((item, index) => (
               <Link
                 key={item}
@@ -119,16 +119,16 @@ const Header: React.FC = () => {
                   handleMouseLeaveTop();
                   handleMouseLeaveBottom();
                 }}
-                className="relative group cursor-pointer px-2"
+                className="relative group cursor-pointer h-[70px] w-full px-2 flex justify-between items-center"
                 id={`link-${index}`}
               >
-                <span className="hover:text-gray-800 transition">{item}</span>
+                <span className="hover:text-gray-800 transition h-full flex justify-center items-center w-full">{item}</span>
               </Link>
             ))}
 
             {/* Social Dropdown */}
             <Link
-              className="relative group cursor-pointer px-2"
+              className="relative group cursor-pointer px-2 h-[70px] flex justify-center items-center"
               duration={500}
               onMouseEnter={() => handleMouseEnter(4)}
               onMouseLeave={() => {
@@ -203,7 +203,7 @@ const Header: React.FC = () => {
               )}
             </Link>
             <Link
-              className="relative group cursor-pointer px-2"
+              className="relative group cursor-pointer px-2 h-[70px] flex justify-center items-center"
               duration={500}
               onMouseEnter={() => handleMouseEnter(5)}
               onMouseLeave={() => {
