@@ -1,7 +1,13 @@
-import React from 'react';
-import {  FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import React from "react";
+import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 const Footer: React.FC = () => {
+  const handleLinkClick = (project: { link: string }) => {
+    const newWindow = window.open(project.link, "_blank");
+    if (newWindow) newWindow.opener = null;
+  };
+
   return (
     <footer className="bg-gray-900 text-white py-10">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -9,9 +15,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           {/* Company Logo and Info */}
           <div className="flex flex-col gap-4">
-            <h2 className="text-2xl font-bold text-green-500">Ashish Vishwakarma</h2>
+            <h2 className="text-2xl font-bold text-green-500">
+              Ashish Vishwakarma
+            </h2>
             <p className="text-gray-400">
-              Building modern, responsive websites and creative web applications that leave a lasting impression.
+              Building modern, responsive websites and creative web applications
+              that leave a lasting impression.
             </p>
           </div>
 
@@ -44,19 +53,34 @@ const Footer: React.FC = () => {
         {/* Social Media Links */}
         <div className="flex justify-center space-x-6 mb-6">
           {[
-            { icon: <FaGithub />, link: "https://github.com" },
-            { icon: <FaLinkedinIn />, link: "https://linkedin.com" },
-            { icon: <FaInstagram />, link: "https://instagram.com" },
+            {
+              icon: <FaGithub />,
+              link: "https://github.com/aishuvishwakarma",
+            },
+            {
+              icon: <FaLinkedinIn />,
+              link: "https://www.linkedin.com/in/ashish-vishwakarma-5827131a2",
+            },
+            {
+              icon: <FaInstagram />,
+              link: "https://www.instagram.com/codeamon_",
+            },
           ].map((social, index) => (
-            <a
-              key={index}
-              href={social.link}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              // className="flex items-center hover:bg-gray-100"
               className="text-gray-400 hover:text-green-500 transition text-xl"
+              key={index}
+              onClick={() =>
+                handleLinkClick({
+                  link: social.link,
+                })
+              }
             >
-              {social.icon}
-            </a>
+              <span
+              >
+                {social.icon}
+              </span>
+            </button>
           ))}
         </div>
 

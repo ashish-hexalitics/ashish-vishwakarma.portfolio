@@ -148,9 +148,9 @@ const Header: React.FC = () => {
                 Social
               </button>
               {isSocialOpen && (
-                <div className="absolute mt-2 py-2 w-48 bg-white rounded-lg shadow-xl z-50">
+                <div className="absolute top-[70px] mt-2 py-2 w-48 bg-white rounded-lg shadow-xl z-50">
                   <Link
-                    to="https://linkedin.com/in/yourprofile"
+                    to="https://www.linkedin.com/in/ashish-vishwakarma-5827131a2"
                     className="flex items-center px-4 py-2 text-gray-800 hover:bg-gray-100"
                     target="_blank"
                     rel="noopener noreferrer"
