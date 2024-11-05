@@ -91,9 +91,12 @@ const Header: React.FC = () => {
     }
   };
 
+
   const handleLinkClick = (project: {link:string}) => {
-    window.open(project.link, "_blank", "rel=noopener noreferrer");
+    const newWindow = window.open(project.link, "_blank");
+    if (newWindow) newWindow.opener = null; 
   };
+  
 
   return (
     <header className="fixed w-full p-4 transition-all duration-1000 bg-transparent bg-opacity-90 z-50 backdrop-blur-md">

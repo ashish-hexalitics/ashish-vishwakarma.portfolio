@@ -9,8 +9,10 @@ const ProjectsSection: React.FC = () => {
   };
 
   const handleClick = (project: Iprojects) => {
-    window.open(project.link, "_blank", "rel=noopener noreferrer");
+    const newWindow = window.open(project.link, "_blank");
+    if (newWindow) newWindow.opener = null; 
   };
+  
 
   return (
     <section
