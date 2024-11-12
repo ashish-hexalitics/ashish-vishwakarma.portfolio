@@ -4,6 +4,8 @@ import ink_apps from "../assets/images/ink_apps.png";
 import digiana_fresh from "../assets/images/digiana_fresh.png";
 import project_force from "../assets/images/project_force.png";
 import twoDogs from "../assets/images/2dogs.png";
+import digitalsurgeons from "../assets/images/digitalsurgeons.png";
+import soham from "../assets/images/soham.png";
 
 export interface Iprojects {
   title: string;
@@ -12,7 +14,7 @@ export interface Iprojects {
   link: string;
   technolodgy_used: string;
   sub_title: string;
-  features:string
+  features: string;
 }
 
 export const projects: Iprojects[] = [
@@ -33,7 +35,7 @@ export const projects: Iprojects[] = [
     features: `Implemented advanced accounting features for managing vendors and debtors, similar to Tally software, allowing users to track balances, generate invoices, and manage payments efficiently. The app includes both a React Native mobile application and a React.js web app for comprehensive, multi-platform accessibility.`,
     image: ink_apps,
     link: "https://inkapps.io/",
-  },  
+  },
   {
     title: "Inkdesk",
     technolodgy_used: `Remix.js, MongoDB, Prisma ORM , Tailwind CSS`,
@@ -51,7 +53,7 @@ export const projects: Iprojects[] = [
     features: `Created a user-friendly e-commerce site featuring a secure Payubiz payment gateway. The admin panel allows management of product listings, customer interactions, and transaction processing, ensuring a smooth experience for both customers and administrators.`,
     image: digiana_fresh,
     link: "https://digianafresh.com/",
-  },  
+  },
   {
     title: "Projectsforce",
     technolodgy_used: `Material UI, React, Node.js, Cube.js, MySQL, Remix.js, Prisma, Next.js`,
@@ -60,7 +62,7 @@ export const projects: Iprojects[] = [
     features: `Created dynamic widget functionality for the dashboard, allowing users to customize their views and access relevant project information easily. Implemented features such as task assignment, progress tracking, and project timelines to facilitate team collaboration and ensure project success.`,
     image: project_force,
     link: "https://projectsforce.com/",
-  },  
+  },
   {
     title: "2 Dogs",
     technolodgy_used: `React, Node.js, MongoDB, Tailwind CSS, Payment Gateway Payubiz Integration`,
@@ -69,6 +71,26 @@ export const projects: Iprojects[] = [
     features: `Users can create dynamic tags for their pets, allowing for personalized service offerings.`,
     image: twoDogs,
     link: "https://2-dogs.hexalitics.com/",
-  }  
+  },
 ];
 
+export const GsapAnimation: Iprojects[] = [
+  {
+    title: "digitalsurgeons",
+    technolodgy_used: `utilized javascrip , Gsap ,Gsap Scroll Trigger`,
+    sub_title: `Digitalsurgeons - Gsap Animation`,
+    description: `created animation with Gsap Scroll Trigger`,
+    features: `created 3d ring with mouse over effect`,
+    image: digitalsurgeons,
+    link: "https://cute-youtiao-6befb8.netlify.app/",
+  },
+  {
+    title: "SO'HAM",
+    technolodgy_used: `utilized javascrip , Gsap ,Gsap Scroll Trigger`,
+    sub_title: `SO'HAM - A Art Gallery`,
+    description: `created a Art Gallery with Gsap animation`,
+    features: `created 3d Card Effect`,
+    image: soham,
+    link: "https://superb-bienenstitch-b899b7.netlify.app/",
+  }
+];
