@@ -5,6 +5,7 @@ import {
   SiNextdotjs,
   SiNestjs,
   SiPrisma,
+  SiStripe
 } from "react-icons/si";
 import { FaReact, FaNodeJs, FaDatabase, FaJsSquare } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -64,6 +65,12 @@ const skills = [
     description: "Next-generation ORM for Node.js and TypeScript",
     link: "https://www.prisma.io/",
   },
+  {
+    icon: <SiStripe />,
+    name: "Stripe",
+    description: "A powerful platform for managing online payments and financial infrastructure.",
+    link: "https://stripe.com/",
+  }  
 ];
 
 const SkillsSection: React.FC = () => {
